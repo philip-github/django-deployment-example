@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "login_app/base.html" %}
+{% block body_block %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Register Page</title>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="jumbotron">
+
+        {% if registered %}
+
+          <h1><em>Thank You For Register</em></h1>
+
+        {% else %}
+
+        <h2>Register Here</h2>
+        <h3>Fill Out This Form:</h3>
+
+        <form class="form-group"  method="POST">
+
+          {% csrf_token %}
+          {{ user_form.as_p }}
+          {{ profile_form.as_p }}
+
+          <input type="submit" class="btn btn-primary" value="Submit">
+
+        </form>
+        {% endif %}
+      </div>
+
+    </div>
+
+    {% endblock %}
+  </body>
+</html>
